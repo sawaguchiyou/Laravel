@@ -54,7 +54,7 @@ class MainController extends Controller
         }
 
         if(isset($product_search[0])){
-                
+
                 $product_id = $product_search[0]->Product_ID;
                 $product_name = $product_search[0]->Product_Name;
                 $product_val = $product_search[0]->Product_Val;
