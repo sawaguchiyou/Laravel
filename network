@@ -1,0 +1,30 @@
+@extends()  継承
+git remote add origin ssh://sawaguchiyou@192.168.0.145:22/Users/sawaguchiyou/app/Laravel/repository/project.git
+git clone add origin ssh://sawaguchiyou@192.168.0.145:22/Users/sawaguchiyou/app/Laravel/repository/project.git
+
+git remote add origin https://github.com/sawaguchiyou/test.git
+
+git remote add origin https://github.com/sawaguchiyou/Laravel.git
+
+https://sawaguchiyou@bitbucket.org/sawaguchiyou/laravel.git
+
+git config --global user.email "49736915+sawaguchiyou@users.noreply.github.com"
+
+git remote set-url origin https://github.com/sawaguchiyou/Laravel.git
+git remote set-url origin git@github.com:sawaguchiyou/Laravel.git
+
+/Users/sawaguchiyou/Laravel/
+
+github手順
+①
+ローカルリポジトリに設定したいディレクトリまでcdで移動
+②
+コマンド「git init」⇨そのディレクトリがローカルリポジトリに設定される（.gitフォルダが生成される。）
+③
+リポジトリのデータを全てコミットする予定ならコマンド「git add .」
+④
+コマンド「git status」で状況確認
+⑤
+コマンド「git remote add origin https://github.com/sawaguchiyou/Laravel.git」でリモートリポジトリを選択する。
+⑥
+コマンド「git push origin master」で、git add .したデータをすべてリモートリポジトリにコミットする。
