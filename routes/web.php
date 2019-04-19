@@ -46,6 +46,10 @@ Route::post('/main/update', 'MainController@productupdate');
 // 商品情報削除処理
 Route::post('/main/delete', 'MainController@productdelete');
 
+// 商品新規登録処理
+Route::post('/insert', 'InsertController@insert');
+
+
 // 社員新規登録処理
 Route::post('/staff/ins' ,'SignupController@staffinsert');
 

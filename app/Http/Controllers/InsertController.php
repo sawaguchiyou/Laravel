@@ -40,7 +40,7 @@ class InsertController extends Controller{
             $product = $this->select($product_id);
         }
 
-        if($product === 0){
+        if($product === config('const.PRODUCT_COUNT')){
         $result = DB::connection('mysql_product')->table('M_Product')
             ->insert([
                 'Product_ID' => $product_id,
