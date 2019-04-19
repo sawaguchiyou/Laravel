@@ -18,4 +18,7 @@ tytytyty
 
 fadfaaea
 
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCf01DYiw2rcBlqaxkmH9q425eMgz3DZakmXZm+ptsOz6iLJZg3VQkWOPRM9du2DLQq3csOqwzL3vSjktBTE7Lge7YkpuK056irYP6YDg+neHNWOKVfyN05ox4zTf3XMJ+HjB232KSMKctrD9gekjWVxZzpwOl63O5Op75xpgO0GtKoUE8lI1OJMdL1FJaRkmPco0Jy6kDMM99xP+LL/QVwHTiRh9s1xipJ9QjqDmCViI7sen9CkKstXsYdqD+HEKtFp66AaCDLOIL4f2Sk10aCamS7PnRQSUrJN+kJjBIyTXmz7whpaF3/k5Nk1Oa6/ZGnKkfS9ylALhsxhJvvnamj vagrant@homestead
+
+curl -u "sawaguchiyou:sawaguchiyou" https://api.github.com
+
+tetetete
