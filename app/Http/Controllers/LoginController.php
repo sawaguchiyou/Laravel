@@ -27,7 +27,7 @@ class LoginController extends Controller
 				->WHERE('Division_No',$password)
 				->count();
 
-		if($staff === 1){
+		if($staff === config('const.STAFF_COUNT')){
 			return view('mainmenu');
 		}else{
 			echo "<script>alert('社員IDもしくはパスワードが誤っているためログインできません。再度入力してください。')</script>";
