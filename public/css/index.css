@@ -1,0 +1,55 @@
+/* ログインフォーム_コンテナ_css */
+.rogin-contain{
+    max-width:300px;
+    margin:50px auto 20px auto;
+    padding:30px;
+    background-color:#fff;
+    border-radius:5px;
+    box-shadow:3px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ログインフォーム_コンテンツ_css */
+.rogin-content{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+}
+
+/* ログインフォーム_テキスト_css */
+.rogin-text{
+    width:40%;
+    margin:0;
+    padding:0;
+    color:#666;
+    box-sizing:border-box;
+}
+
+/* ログインフォーム_テキストボックス_css */
+.rogin-box{
+    width:60%;
+    padding:5px 10px;
+    margin-bottom:10px;
+    border:1px solid #ccc;
+    box-sizing:border-box;
+}
+
+/* ログインフォーム_ボタン_css */
+.rogin-btn{
+    padding:5px 10px;
+    font-weight:bold;
+    color:#fff;
+    border:none;
+    border-radius:3px;
+    background-color:#74b9ff;
+    transition:ease-in-out .2s;
+}
+
+.rogin-btn:hover{
+    background-color:#0984e3;
+}
+
+/* 社員新規登録、削除_css */
+.signup_del_box{display:inline-block;}
+.signup_del_box a{padding:0 10px; color:#74b9ff; transition:ease-in-out .2s;}
+.signup_del_box a:hover{color:#0984e3;}
