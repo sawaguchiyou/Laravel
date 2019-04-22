@@ -17,16 +17,11 @@ class LoginController extends Controller
    * @param  array $request
    * @return Response
    */
-  public function validator(Request $request)
-  {
-
-      $validator =  Validator::make($request->all(), [
-        'user_id' => 'required|regex:regex:/^[a-zA-Z0-9-]+$/',
+  public function validator(Request $request){
+      $validate = Validator::make($request->all(),[
+        'user_id' => 'required|alpha_num',
         'password' => 'required|integer'
-      ]);
-
-     return $validator->fails();
-
+      ])->validate();
   }
 
    /**
@@ -41,11 +36,20 @@ class LoginController extends Controller
         $staff_id = $request->input('user_id');
         // postで受け取ったpaswordを変数に格納
         $password = $request->input('password');
+
+        if($staff_id === null){
+          echo "<script>alert('社員IDが未入力です。')</script>";
+          return view('signup');
+        }else{
+          // validatorの呼び出し
+          $staff_validate = $this->validator($request);
+        }
+
         // SQL文
-		$staff = DB::table('M_Staff')
-				->WHERE('Staff_ID',$staff_id)
-				->WHERE('Division_No',$password)
-				->count();
+    		$staff = DB::table('M_Staff')
+  				->WHERE('Staff_ID',$staff_id)
+  				->WHERE('Division_No',$password)
+  				->count();
 
 		if($staff === config('const.STAFF_COUNT')){
 			return view('mainmenu');

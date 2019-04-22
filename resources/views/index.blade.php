@@ -13,9 +13,11 @@
     <div class="rogin-content">
         <p class="rogin-text">社員ID</p>
         <input class="rogin-box" type="text" name="user_id">
+        {{$errors->first('user_id')}}
 
         <p class="rogin-text">パスワード</p>
         <input class="rogin-box" type="password" name="password">
+        {{$errors->first('password')}}
 
         <p class="rogin-text"></p>
         <input class="rogin-btn" type="submit" value="ログイン" name="rogin-btn">
