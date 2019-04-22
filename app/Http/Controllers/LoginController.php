@@ -6,9 +6,29 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use app\Models;
+use Validator;
 
 class LoginController extends Controller
 {
+
+  /**
+   * バリデーション処理
+   *
+   * @param  array $request
+   * @return Response
+   */
+  public function validator(Request $request)
+  {
+
+      $validator =  Validator::make($request->all(), [
+        'user_id' => 'required|regex:regex:/^[a-zA-Z0-9-]+$/',
+        'password' => 'required|integer'
+      ]);
+
+     return $validator->fails();
+
+  }
+
    /**
      * ログイン処理
      *
