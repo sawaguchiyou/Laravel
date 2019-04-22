@@ -106,7 +106,7 @@ class MainController extends Controller
             ]);
         }else{
             // 入力内容不正
-            echo "<script>alert('入力内容に謝りがあります。')</script>";
+              echo "<script>alert('入力内容に誤りがあります。')</script>";
 
             return view('search');
         }
