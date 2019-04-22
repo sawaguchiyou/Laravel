@@ -83,8 +83,6 @@ class MainController extends Controller
         $product_name = $request->input("product_name");
         // 商品名
         $product_val = $request->input("product_value");
-        // 更新結果
-        $product_update = null;
 
         if(!empty($product_code)){
             // 入力値チェック
@@ -105,7 +103,6 @@ class MainController extends Controller
                     'insert_date' => Carbon::now()
             ]);
         }else{
-            // 入力内容不正
               echo "<script>alert('入力内容に誤りがあります。')</script>";
 
             return view('search');

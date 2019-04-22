@@ -17,14 +17,15 @@ Route::get('/', function () {
     return view('index');
 });
 
+// 初期表示
+Route::get('/signup', function () {
+    return view('signup');
+});
+
+
 // 検索・更新画面の「戻る」ボタン押下時
 Route::post('/back', function () {
     return view('mainmenu');
-});
-
-// 検索・更新画面の「戻る」ボタン押下時
-Route::post('/back/top', function () {
-    return view('index');
 });
 
 // ログイン画面で受け取ったuser_idとパスワードをコントローラに渡す
