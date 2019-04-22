@@ -22,6 +22,11 @@ Route::post('/back', function () {
     return view('mainmenu');
 });
 
+// 検索・更新画面の「戻る」ボタン押下時
+Route::post('/back/top', function () {
+    return view('index');
+});
+
 // ログイン画面で受け取ったuser_idとパスワードをコントローラに渡す
 Route::post('signin', 'LoginController@signin');
 
@@ -65,6 +70,3 @@ Route::post('/staff/del' ,'StaffdelController@staffdel');
 Route::post('staffdel', function () {
     return view('staffdel');
 });
-
-
-
