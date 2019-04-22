@@ -71,12 +71,15 @@ p{margin:0; padding:0;}
         <div class="signup_contain">
             <p class="signup_text">社員ID</p>
             <input class="signup_box" type="text" name="staff_id">
+            {{ $errors->first('staff_id') }}
 
             <p class="signup_text">社員名</p>
             <input class="signup_box" type="text" name="staff_name">
+            {{ $errors->first('staff_name') }}
 
             <p class="signup_text">パスワード</p>
             <input class="signup_box" type="password" name="password">
+            {{ $errors->first('password') }}
 
             <p class="signup_text"></p>
             <div class="signup_btn">
