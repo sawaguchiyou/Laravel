@@ -21,7 +21,7 @@ class LoginController extends Controller
   {
 
       $validator =  Validator::make($request->all(), [
-        'user_id' => 'required|string',
+        'user_id' => 'required|regex:regex:/^[a-zA-Z0-9-]+$/',
         'password' => 'required|integer'
       ]);
 
