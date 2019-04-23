@@ -32,6 +32,12 @@ Route::get('/staffdel', function () {
     return view('staffdel');
 });
 
+// 社員情報削除画面リダイレクト先
+Route::get('/main', function () {
+    return view('insert');
+});
+
+
 
 // 検索・更新画面の「戻る」ボタン押下時
 Route::post('/back', function () {
@@ -67,7 +73,7 @@ Route::post('/main/update', 'MainController@productupdate');
 Route::post('/main/delete', 'MainController@productdelete');
 
 // 商品新規登録処理
-Route::post('/insert', 'InsertController@insert');
+Route::post('/insert', 'MainController@productinsert');
 
 // 一覧取得処理
 Route::post('/export/get', 'ExportController@get');
