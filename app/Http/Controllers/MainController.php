@@ -12,25 +12,25 @@ use Validator;
 class MainController extends Controller
 {
 
-    /**
-     * バリデーション処理
-     *
-     * @param  array $request
-     * @return Response
-     */
-    public function validator(Request $request)
-    {
-
-        $validator =  Validator::make($request->all(), [
-          'product_code' => 'required|string',
-          'product_name' => 'required|string',
-          'product_value' => 'required|integer'
-        ]);
-
-       return $validator->fails();
-
-    }
-
+    // /**
+    //  * バリデーション処理
+    //  *
+    //  * @param  array $request
+    //  * @return Response
+    //  */
+    // public function validator(Request $request)
+    // {
+    //
+    //     $validator =  Validator::make($request->all(), [
+    //       'product_code' => 'required|string',
+    //       'product_name' => 'required|string',
+    //       'product_value' => 'required|integer'
+    //     ]);
+    //
+    //    return $validator->fails();
+    //
+    // }
+    //
     /**
      * 商品コード検索処理
      *
@@ -85,27 +85,23 @@ class MainController extends Controller
 
         if(!empty($product_code)){
             // 入力値チェック
-            $validator = $this->validator($request);
+            $validator = new ValidatorController;
+            $validator->validatorproduct($request);
+
+            // $validator = $this->validator($request);
         }else{
             // 入力内容不正
             echo "<script>alert('商品コードが未入力です。')</script>";
-
             return view('search');
         }
 
-        if($validator != true){
-            $product_update = DB::connection('mysql_product')->table('M_Product')
-                ->WHERE('Product_ID',$product_code)
-                ->update([
-                    'Product_Name' => $product_name,
-                    'Product_Val' => $product_val,
-                    'insert_date' => Carbon::now()
-            ]);
-        }else{
-              echo "<script>alert('入力内容に誤りがあります。')</script>";
-
-            return view('search');
-        }
+        $product_update = DB::connection('mysql_product')->table('M_Product')
+            ->WHERE('Product_ID',$product_code)
+            ->update([
+                'Product_Name' => $product_name,
+                'Product_Val' => $product_val,
+                'insert_date' => Carbon::now()
+        ]);
 
         if($product_update === 1){
             // 更新完了

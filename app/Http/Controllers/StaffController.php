@@ -71,7 +71,7 @@ class StaffController extends Controller{
 
         // 入力値チェック
         $validator = new ValidatorController;
-        $validator->validator($request);
+        $validator->validatorstaff($request);
         // 社員ID重複チェックのデータ取得
         $staff = $this->select($staff_id);
 

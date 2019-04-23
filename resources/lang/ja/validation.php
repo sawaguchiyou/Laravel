@@ -115,7 +115,9 @@ return [
     'attributes' => [
       'staff_id' => '社員ID',
       'staff_name' => '社員名',
-      'password' => 'パスワード'
+      'password' => 'パスワード',
+      'product_name' => '商品名',
+      'product_value' => '単価'
     ],
 
 ];

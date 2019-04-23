@@ -38,6 +38,10 @@ Route::post('/back', function () {
     return view('mainmenu');
 });
 
+// 商品情報登録画面リダイレクト先
+Route::get('/main/search', function () {
+    return view('search');
+});
 
 // mainmenuでの行き先振り分け
 Route::post('main', function (Request $request) {

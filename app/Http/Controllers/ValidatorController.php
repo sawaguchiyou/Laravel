@@ -8,17 +8,33 @@ use Validator;
 class ValidatorController extends Controller{
 
   /**
-   * バリデーション処理
+   * 社員情報登録バリデーション処理
    *
    * @param  array $request
    * @return Response
    */
-  public function validator(Request $request)
+  public function validatorstaff(Request $request)
   {
-    $validator = Validator::make($request->all(), [
+    Validator::make($request->all(), [
       'staff_id' => 'required|regex:/^[a-zA-Z0-9]+$/|max:10',
       'staff_name' => 'required|string|max:40',
       'password' => 'required|min:4|max:11'
     ])->validate();
   }
+
+  /**
+   * 商品情報更新バリデーション処理
+   *
+   * @param  array $request
+   * @return Response
+   */
+  public function validatorproduct(Request $request)
+  {
+    Validator::make($request->all(), [
+      'product_code' => 'required|string',
+      'product_name' => 'required|string',
+      'product_value' => 'required|integer'
+    ])->validate();
+  }
+
 }
