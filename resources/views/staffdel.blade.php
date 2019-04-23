@@ -73,9 +73,8 @@ body{
         <p class="rogin-text"></p>
         <div class="del-back-btn">
             <input type="submit" value="削除" name="del-btn">
-            <input type="submit" value="戻る" name="back-btn" formaction = "/back/top">
+            <input type="submit" value="戻る" name="back-btn" formaction = "/">
         </div>
     </div>
 </form>
-
 </html>

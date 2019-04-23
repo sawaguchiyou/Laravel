@@ -12,19 +12,24 @@ use Illuminate\Http\Request;
 |
 */
 
-// 初期表示
+// 初期表示（ログイン画面）
 Route::get('/', function () {
     return view('index');
 });
 
+// 戻るボタン押下時
 Route::post('/', function () {
-    return view('index');
+    return redirect('/');
 });
 
-
-// 初期表示
+// 社員情報登録画面リダイレクト先
 Route::get('/signup', function () {
     return view('signup');
+});
+
+// 社員情報削除画面リダイレクト先
+Route::get('/staffdel', function () {
+    return view('staffdel');
 });
 
 
@@ -33,12 +38,6 @@ Route::post('/back', function () {
     return view('mainmenu');
 });
 
-Route::post('/back/top', function () {
-    return view('index');
-});
-
-// ログイン画面で受け取ったuser_idとパスワードをコントローラに渡す
-Route::post('signin', 'LoginController@signin');
 
 // mainmenuでの行き先振り分け
 Route::post('main', function (Request $request) {
@@ -50,7 +49,7 @@ Route::post('main', function (Request $request) {
   }else if($routin == 'exp'){
 		return view('export');
 	}else if($routin == 'exit'){
-		return view('index');
+		return redirect('/');
 	}
 });
 
@@ -73,16 +72,22 @@ Route::post('/export/get', 'ExportController@get');
 Route::post('/export/output', 'ExportController@output');
 
 
+/*
+ * staff系root
+ */
+// 社員IDログイン処理
+Route::post('signin', 'StaffController@signin');
+
 // 社員新規登録処理
-Route::post('/staff/ins' ,'SignupController@staffinsert');
+Route::post('/staff/ins' ,'StaffController@staffinsert');
+
+// 社員情報削除処理
+Route::post('/staff/del' ,'StaffController@staffdel');
 
 // 社員新規登録画面遷移
 Route::post('signup', function () {
     return view('signup');
 });
-
-// 社員情報削除処理
-Route::post('/staff/del' ,'StaffdelController@staffdel');
 
 // 社員情報削除画面遷移
 Route::post('staffdel', function () {

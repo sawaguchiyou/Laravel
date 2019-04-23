@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\DB;
 use app\Models;
 use Validator;
 
-class SignupController extends Controller{
+class StaffController extends Controller{
 
    /**
     * 社員情報重複チェック
     *
-    * @param  Request $request
+    * @param  String $id
     * @return Response
     */
     public function select(?String $id){
@@ -23,6 +23,36 @@ class SignupController extends Controller{
         ->count();
         return $list;
     }
+
+    /**
+     * ログイン処理
+     *
+     * @param  Request $request
+     * @return Response
+     */
+     public function signin(Request $request)
+     {
+      	// postで受け取った社員IDを変数に格納
+        $staff_id = $request->input('user_id');
+        // postで受け取ったpaswordを変数に格納
+        $password = $request->input('password');
+
+        if($staff_id === null || $staff_id === ''){
+          return redirect('/')->with('message', '社員IDが未入力です。');
+        }else{
+          // ログイン処理
+          $staff = DB::table('M_Staff')
+            ->WHERE('Staff_ID',$staff_id)
+            ->WHERE('Division_No',$password)
+            ->count();
+        }
+
+     		if($staff === config('const.STAFF_COUNT')){
+     			return view('mainmenu');
+     		}else{
+     			return redirect('/')->with('message', '社員IDもしくはパスワードが誤っているためログインできません。再度入力してください。');
+     		}
+     }
 
     /**
      * 社員情報登録処理
@@ -68,4 +98,31 @@ class SignupController extends Controller{
             return redirect('/')->with('message', '社員IDの登録に失敗しました。');
         }
     }
+
+     /**
+      * 社員情報削除処理
+      *
+      * @param  Request $request
+      * @return Response
+      */
+     public function staffdel(Request $request){
+         // 社員ID
+         $staff_id = $request->input("staff_id");
+         // パスワード
+         $password = $request->input("password");
+
+         $staff_del = DB::table('M_Staff')
+             ->WHERE('Staff_ID',$staff_id)
+             ->WHERE('Division_No',$password)
+             ->delete();
+
+         if($staff_del === 1){
+             // 削除完了
+             return redirect('/')->with('message', '社員情報を削除しました。');
+         }else{
+             // 削除失敗
+             return redirect('/')->with('message', '社員情報の削除に失敗しました。');
+         }
+     }
+
 }

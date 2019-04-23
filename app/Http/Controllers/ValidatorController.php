@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Validator;
 
 class ValidatorController extends Controller{
+
   /**
    * バリデーション処理
    *
@@ -17,7 +18,7 @@ class ValidatorController extends Controller{
     $validator = Validator::make($request->all(), [
       'staff_id' => 'required|regex:/^[a-zA-Z0-9]+$/|max:10',
       'staff_name' => 'required|string|max:40',
-      'password' => 'required|integer|min:4'
+      'password' => 'required|min:4|max:11'
     ])->validate();
   }
 }

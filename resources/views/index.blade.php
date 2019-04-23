@@ -9,7 +9,7 @@
 
 <body>
   @if (Session::has('message'))
-   <div class="alert alert-info mb-3">
+   <div class="alert alert-success" >
      {{ session('message')  }}
    </div>
   @endif
