@@ -62,6 +62,7 @@ body{background-color:#f4f4f4; font-size:14px; letter-spacing:1px;}
 <div class="syouhin-wrap">
     <button type="submit" name="name" value="main" class="syouhin-btn">検索・更新・削除</button>
     <button type="submit" name="name" value="ins" class="syouhin-btn">新規登録</button>
+    <button type="submit" name="name" value="exp" class="syouhin-btn">csv出力</button>
     <button type="submit" name="name" value="exit" class="syuuryou-btn">終了</button>
 </div>
 </form>

@@ -38,6 +38,8 @@ Route::post('main', function (Request $request) {
 		return view('search');
 	}else if($routin == 'ins'){
 		return view('insert');
+  }else if($routin == 'exp'){
+		return view('export');
 	}else if($routin == 'exit'){
 		return view('index');
 	}
@@ -54,6 +56,12 @@ Route::post('/main/delete', 'MainController@productdelete');
 
 // 商品新規登録処理
 Route::post('/insert', 'InsertController@insert');
+
+// 一覧取得処理
+Route::post('/export/get', 'ExportController@get');
+
+// csv出力処理
+Route::post('/export/output', 'ExportController@output');
 
 
 // 社員新規登録処理
