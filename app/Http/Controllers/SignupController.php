@@ -70,19 +70,19 @@ class SignupController extends Controller{
                   'insert_date' => Carbon::now()
               ]);
         }else{
-          echo "<script>alert('社員IDが重複しています。')</script>";
-          return redirect('signup');
+          // echo "<script>alert('社員IDが重複しています。')</script>";
+          return redirect('/signup')->with('message', '社員IDが重複しています。');
         }
 
         // 登録結果
         if($result === true){
             // 新規登録完了
             echo "<script>alert('社員IDの登録が完了しました。')</script>";
-            return view('index');
+            return redirect('/');
         }else{
             // 新規登録失敗
             echo "<script>alert('社員IDの登録に失敗しました。')</script>";
-            return view('index');
+            return redirect('/');
         }
     }
 }

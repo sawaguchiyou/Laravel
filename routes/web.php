@@ -30,7 +30,7 @@ Route::post('/back', function () {
 
 Route::post('/back/top', function () {
     return view('index');
-}
+});
 
 // ログイン画面で受け取ったuser_idとパスワードをコントローラに渡す
 Route::post('signin', 'LoginController@signin');

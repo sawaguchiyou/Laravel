@@ -76,14 +76,18 @@ p{margin:0; padding:0;}
         <div class="signup_contain">
             <p class="signup_text">社員ID</p>
             <input class="signup_box" type="text" name="staff_id" maxlength="10">
-            <div class = "error">{{$errors->first('staff_id')}}</div>
-
+            <div class = "error">
+            {{$errors->first('staff_id')}}
+            @if (Session::has('message'))
+            <p>{{ session('message') }}</p>
+            @endif
+            </div>
             <p class="signup_text">社員名</p>
             <input class="signup_box" type="text" name="staff_name" maxlength="40">
             <div class = "error">{{ $errors->first('staff_name') }}</div>
 
             <p class="signup_text">パスワード</p>
-            <input class="signup_box" type="password" name="password" minlength="">
+            <input class="signup_box" type="password" name="password" minlength="4">
             <div class = "error">{{ $errors->first('password') }}</div>
 
             <p class="signup_text"></p>
