@@ -62,6 +62,11 @@ p{margin:0; padding:0;}
 .signup_btn input:hover{
     background-color:#0984e3;
 }
+.error {
+  color:#f00;
+  width:100%;
+}
+
 </style>
 </head>
 
@@ -70,16 +75,16 @@ p{margin:0; padding:0;}
     {{ csrf_field() }}
         <div class="signup_contain">
             <p class="signup_text">社員ID</p>
-            <input class="signup_box" type="text" name="staff_id">
-            {{ $errors->first('staff_id') }}
+            <input class="signup_box" type="text" name="staff_id" maxlength="10">
+            <div class = "error">{{$errors->first('staff_id')}}</div>
 
             <p class="signup_text">社員名</p>
-            <input class="signup_box" type="text" name="staff_name">
-            {{ $errors->first('staff_name') }}
+            <input class="signup_box" type="text" name="staff_name" maxlength="40">
+            <div class = "error">{{ $errors->first('staff_name') }}</div>
 
             <p class="signup_text">パスワード</p>
-            <input class="signup_box" type="password" name="password">
-            {{ $errors->first('password') }}
+            <input class="signup_box" type="password" name="password" minlength="">
+            <div class = "error">{{ $errors->first('password') }}</div>
 
             <p class="signup_text"></p>
             <div class="signup_btn">
