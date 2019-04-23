@@ -21,9 +21,9 @@ class SignupController extends Controller{
   {
     $staff_id = $request->input('staff_id');
     $validator = Validator::make($request->all(), [
-      'staff_id' => 'required|regex:/^[a-zA-Z0-9]+$/',
-      'staff_name' => 'required|string',
-      'password' => 'required|integer'
+      'staff_id' => 'required|regex:/^[a-zA-Z0-9]+$/|max:10',
+      'staff_name' => 'required|string|max:40',
+      'password' => 'required|integer|min:4'
     ])->validate();
   }
 
@@ -55,41 +55,34 @@ class SignupController extends Controller{
         // postで受け取ったパスワードを変数に格納
         $password = $request->input('password');
 
-        if(!empty($staff_id)){
-          // 入力値チェック
-          $this->validator($request);
-
-        }else{
-          echo "<script>alert('社員IDが未入力です。')</script>";
-          return view('signup');
-        }
-        // 社員ID重複チェック
+        // 入力値チェック
+        $this->validator($request);
+        // 社員ID重複チェックのデータ取得
         $staff = $this->select($staff_id);
 
+        // 重複チェック
         if($staff === config('const.STAFF_NOT_COUNT')){
           $result = DB::table('M_Staff')
               ->insert([
                   'Staff_ID' => $staff_id,
                   'Staff_Name' => $staff_name,
                   'Division_No' => $password,
-                  'insert_date' => Carbon::now(),
+                  'insert_date' => Carbon::now()
               ]);
         }else{
-          echo "<script>alert('社員IDが重複しています。')</script>";
-          return view('signup');
+          // echo "<script>alert('社員IDが重複しています。')</script>";
+          return redirect('/signup')->with('message', '社員IDが重複しています。');
         }
 
+        // 登録結果
         if($result === true){
             // 新規登録完了
-            echo "<script>alert('新規登録完了しました。')</script>";
-
-            return view('index');
-
+            echo "<script>alert('社員IDの登録が完了しました。')</script>";
+            return redirect('/');
         }else{
             // 新規登録失敗
             echo "<script>alert('社員IDの登録に失敗しました。')</script>";
-
-            return view('index');
+            return redirect('/');
         }
     }
 }

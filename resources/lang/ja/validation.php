@@ -113,7 +113,9 @@ return [
     */
 
     'attributes' => [
-      'email' => '社員ID' 
+      'staff_id' => '社員ID',
+      'staff_name' => '社員名',
+      'password' => 'パスワード'
     ],
 
 ];
