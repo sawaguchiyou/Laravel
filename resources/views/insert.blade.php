@@ -59,18 +59,20 @@ p{margin:0; padding:0;}
 {{ csrf_field() }}
   <div class="touroku-contain">
     <p class="touroku-text">商品コード</p>
-    <input class="touroku-textbox" type="number" name="syouhin-code">
+    <input class="touroku-textbox" type="number" name="product_code">
   </div>
-
+<div class = "error">{{ $errors->first('product_code') }}</div>
   <div class="touroku-contain">
     <p class="touroku-text">商品名</p>
-    <input class="touroku-textbox" type="text" name="syouhin-name">
+    <input class="touroku-textbox" type="text" name="product_name">
   </div>
+  <div class = "error">{{ $errors->first('product_name') }}</div>
 
   <div class="touroku-contain">
     <p class="touroku-text">単価</p>
-    <input class="touroku-textbox" type="number" name="tanka-code">
+    <input class="touroku-textbox" type="number" name="product_value">
   </div>
+  <div class = "error">{{ $errors->first('product_value') }}</div>
 
   <div class="touroku-contain">
     <p class="touroku-text"></p>
@@ -79,7 +81,7 @@ p{margin:0; padding:0;}
     <input class="back-btn" type="submit" value="戻る" name="back-btn" formaction = "/back">
     </div>
   </div>
-  
+
 </form>
 </body>
 </html>

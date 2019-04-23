@@ -25,14 +25,14 @@ class InsertController extends Controller{
 
   public function insert(Request $request){
 
-    // postで受け取った社員IDを変数に格納
+    // postで受け取った商品コードを変数に格納
     $product_id = $request->input('syouhin-code');
     // postで受け取ったpaswordを変数に格納
     $product_name = $request->input('syouhin-name');
     // postで受け取った単価を変数に格納
     $product_val = $request->input('tanka-code');
 
-    if($product_id === NULL){
+    if($product_id === NULL || $product_id === ''){
       echo "<script>alert('商品IDが未入力です。')</script>";
       return view('insert');
     }else if($product_name === NULL){

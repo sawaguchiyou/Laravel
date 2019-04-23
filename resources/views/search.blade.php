@@ -60,7 +60,7 @@ p{margin:0; padding:0;}
 
   <div class="kensaku-contain">
     <p class="kensaku-text">商品コード</p>
-    <input class="kensaku-textbox" type="text" name="product_code" 
+    <input class="kensaku-textbox" type="text" name="product_code"
       value = "@isset($product_id) {{$product_id}} @endisset"
     @isset($product_id)
       readonly
@@ -73,22 +73,24 @@ p{margin:0; padding:0;}
 
   <div class="kensaku-contain">
     <p class="kensaku-text">商品名</p>
-    <input class="kensaku-textbox" type="text" name="product_name" 
+    <input class="kensaku-textbox" type="text" name="product_name"
     value = "@isset($product_name) {{$product_name}} @endisset">
   </div>
+  <div class = "error">{{ $errors->first('product_name') }}</div>
 
   <div class="kensaku-contain">
     <p class="kensaku-text">単価</p>
-    <input class="kensaku-textbox" type="text" name="product_value" 
+    <input class="kensaku-textbox" type="text" name="product_value"
     value = "@isset($product_val) {{$product_val}} @endisset">
   </div>
+  <div class = "error">{{ $errors->first('product_value') }}</div>
 
   <div class="kensaku-contain">
     <p class="kensaku-text">前回登録日時</p>
-    <div class="kensaku-textbox" style="background-color:#f4f4f4; "> 
+    <div class="kensaku-textbox" style="background-color:#f4f4f4; ">
       @isset($insert_date) {{$insert_date}} @endisset</div><br>
     <p class="kensaku-text">
-      
+
     </p>
     <div class="kensaku-textbox" style="text-align:right; margin:0;">
     @isset($product_id)
