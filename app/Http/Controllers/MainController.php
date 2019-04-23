@@ -47,7 +47,6 @@ class MainController extends Controller
             $product_search = DB::connection('mysql_product')->table('M_Product')
                 ->WHERE('Product_ID',$product_code)
                 ->get();
-
         }else{
             echo "<script>alert('商品コードが未入力です。')</script>";
             return view('search');

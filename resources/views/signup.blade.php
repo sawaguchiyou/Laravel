@@ -93,7 +93,7 @@ p{margin:0; padding:0;}
             <p class="signup_text"></p>
             <div class="signup_btn">
                 <input type="submit" value="新規登録" name="signup_btn" formaction="/staff/ins">
-                <input type="submit" value="戻る" name="del_btn" formaction="/back/top">
+                <input type="submit" value="戻る" name="del_btn" formaction="/">
             </div>
         </div>
     </form>

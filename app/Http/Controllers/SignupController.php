@@ -11,22 +11,6 @@ use Validator;
 
 class SignupController extends Controller{
 
-  /**
-   * バリデーション処理
-   *
-   * @param  array $request
-   * @return Response
-   */
-  public function validator(Request $request)
-  {
-    $staff_id = $request->input('staff_id');
-    $validator = Validator::make($request->all(), [
-      'staff_id' => 'required|regex:/^[a-zA-Z0-9]+$/|max:10',
-      'staff_name' => 'required|string|max:40',
-      'password' => 'required|integer|min:4'
-    ])->validate();
-  }
-
    /**
     * 社員情報重複チェック
     *
@@ -56,7 +40,8 @@ class SignupController extends Controller{
         $password = $request->input('password');
 
         // 入力値チェック
-        $this->validator($request);
+        $validator = new ValidatorController;
+        $validator->validator($request);
         // 社員ID重複チェックのデータ取得
         $staff = $this->select($staff_id);
 
@@ -70,19 +55,17 @@ class SignupController extends Controller{
                   'insert_date' => Carbon::now()
               ]);
         }else{
-          // echo "<script>alert('社員IDが重複しています。')</script>";
+          // 社員ID重複時
           return redirect('/signup')->with('message', '社員IDが重複しています。');
         }
 
         // 登録結果
         if($result === true){
             // 新規登録完了
-            echo "<script>alert('社員IDの登録が完了しました。')</script>";
-            return redirect('/');
+            return redirect('/')->with('message', '社員IDの登録が完了しました。');
         }else{
             // 新規登録失敗
-            echo "<script>alert('社員IDの登録に失敗しました。')</script>";
-            return redirect('/');
+            return redirect('/')->with('message', '社員IDの登録に失敗しました。');
         }
     }
 }

@@ -17,6 +17,11 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::post('/', function () {
+    return view('index');
+});
+
+
 // 初期表示
 Route::get('/signup', function () {
     return view('signup');

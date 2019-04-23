@@ -8,6 +8,11 @@
 </head>
 
 <body>
+  @if (Session::has('message'))
+   <div class="alert alert-info mb-3">
+     {{ session('message')  }}
+   </div>
+  @endif
 <form action="/signin" method="POST" class="rogin-contain">
     {{ csrf_field() }}
     <div class="rogin-content">
