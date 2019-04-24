@@ -25,9 +25,8 @@ class ExportController extends Controller{
     //
     $list = DB::connection('mysql_product')->table('M_Product')
       ->get();
-    $carbon = Carbon::now().'.csv';
 
-    $stream = fopen($carbon, 'a');
+    $stream = fopen('php://output', 'w');
     fputcsv($stream, ['商品ID', '商品名', '単価', '最終更新日時']);
 
     foreach($list as $lists){
@@ -40,11 +39,11 @@ class ExportController extends Controller{
       ]);
     }
 
-
+    $carbon = carbon::now();
 
     $headers = array(
       'Content-Type' => 'text/csv',
-      // 'Content-Disposition' => 'attachment; filename = '".$carbon."'.csv'
+      'Content-Disposition' => 'attachment; filename = '."$carbon".'.csv'
     );
 
     return Response::make(
