@@ -1,0 +1,45 @@
+/* 検索更新削除_コンテナ_css */
+.kensaku-wrap{
+  display:block;
+  max-width:300px;
+  margin:50px auto;
+  padding:30px;
+  background-color:#fff;
+  border-radius:5px;
+  box-shadow:3px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 検索更新削除_ボックス_css */
+.kensaku-contain{
+  display:flex;
+  flex-wrap:wrap;
+  align-items: center;
+  justify-content:space-between;
+}
+
+/* 検索更新削除_テキスト_css */
+.kensaku-text{width:40%; color:#666; box-sizing: border-box;}
+.kensaku-textbox{
+  width:60%;
+  margin:5px 0;
+  padding:5px;
+  box-sizing: border-box;
+}
+
+/* 検索更新削除_ボタン_css */
+.kensaku-btn{
+  width:31%;
+  margin:0;
+  padding:5px 10px;
+  font-weight:bold;
+  border:none;
+  border-radius:3px;
+  color:#fff;
+  background-color:#74b9ff;
+  transition:ease-in-out .2s;
+}
+
+.kensaku-btn:hover{background-color:#0984e3;}
+
+/* 検索更新削除_エラー_css */
+.error {color:#f00; width:100%;}

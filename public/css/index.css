@@ -22,7 +22,7 @@
     margin:0;
     padding:0;
     color:#666;
-    box-sizing:border-box;
+    box-sizing: border-box;
 }
 
 /* ログインフォーム_テキストボックス_css */
@@ -31,7 +31,7 @@
     padding:5px 10px;
     margin-bottom:10px;
     border:1px solid #ccc;
-    box-sizing:border-box;
+    box-sizing: border-box;
 }
 
 /* ログインフォーム_ボタン_css */
@@ -43,11 +43,10 @@
     border-radius:3px;
     background-color:#74b9ff;
     transition:ease-in-out .2s;
+    box-sizing: border-box;
 }
 
-.rogin-btn:hover{
-    background-color:#0984e3;
-}
+.rogin-btn:hover{background-color:#0984e3;}
 
 /* 社員新規登録、削除_css */
 .signup_del_box{display:inline-block;}
