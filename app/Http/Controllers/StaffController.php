@@ -48,6 +48,7 @@ class StaffController extends Controller{
         }
 
      		if($staff === config('const.STAFF_COUNT')){
+          echo($_SERVER['HOME']);
      			return view('mainmenu');
      		}else{
      			return redirect('/')->with('message', '社員IDもしくはパスワードが誤っているためログインできません。再度入力してください。');
