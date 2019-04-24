@@ -27,6 +27,7 @@
     </tr>
     @endforeach
   </table>
+  <input class="export-btn" type="submit" value="csv入力" formaction = "/export/input">
   <input class="export-btn" type="submit" value="csv出力" formaction = "/export/output">
   <input class="export-btn" type="submit" value="戻る" name="back-btn" formaction = "/back">
   @endisset

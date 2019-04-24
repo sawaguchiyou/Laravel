@@ -85,6 +85,9 @@ Route::post('/export/get', 'ExportController@get');
 // csv出力処理
 Route::post('/export/output', 'ExportController@output');
 
+// csv出力処理
+Route::post('/export/input', 'ExportController@input');
+
 
 /*
  * staff系root

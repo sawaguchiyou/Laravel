@@ -54,4 +54,9 @@ class ExportController extends Controller{
       $headers
     );
   }
+
+  // データ入力
+  public function input (Request $request){
+    
+  }
 }
