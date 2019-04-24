@@ -51,6 +51,12 @@ p{margin:0; padding:0;}
 }
 
 .kensaku-btn:hover{background-color:#0984e3;}
+
+.error {
+  color:#f00;
+  width:100%;
+}
+
 </style>
 </head>
 <body>
@@ -61,11 +67,12 @@ p{margin:0; padding:0;}
   <div class="kensaku-contain">
     <p class="kensaku-text">商品コード</p>
     <input class="kensaku-textbox" type="text" name="product_code"
-      value = "@isset($product_id) {{$product_id}} @endisset"
-    @isset($product_id)
+      value = "@isset($product_code) {{$product_code}} @endisset"
+    @isset($product_code)
       readonly
     @endisset
     >
+    <div class = "error">{{ $errors->first('product_code') }}</div>
     <p class="kensaku-text"></p>
     <button class="kensaku-btn" style="margin:3px;" type="submit" value="search" name="main_btn">検索</button>
   </div>
@@ -93,7 +100,7 @@ p{margin:0; padding:0;}
 
     </p>
     <div class="kensaku-textbox" style="text-align:right; margin:0;">
-    @isset($product_id)
+    @isset($product_code)
         <input class="kensaku-btn" type="submit" value="削除" formaction = "/main/delete">
     @endisset
       <input class="kensaku-btn" type="submit" value="更新" formaction = "/main/update">

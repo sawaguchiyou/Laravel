@@ -32,12 +32,10 @@ Route::get('/staffdel', function () {
     return view('staffdel');
 });
 
-// 社員情報削除画面リダイレクト先
+// 商品情報検索・削除・更新画面リダイレクト先
 Route::get('/main', function () {
-    return view('insert');
+    return view('search');
 });
-
-
 
 // 検索・更新画面の「戻る」ボタン押下時
 Route::post('/back', function () {
@@ -48,6 +46,12 @@ Route::post('/back', function () {
 Route::get('/main/search', function () {
     return view('search');
 });
+
+// 商品情報登録画面リダイレクト先
+Route::get('/main/update', function () {
+    return view('search');
+});
+
 
 // mainmenuでの行き先振り分け
 Route::post('main', function (Request $request) {

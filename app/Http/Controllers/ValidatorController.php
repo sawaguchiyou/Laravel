@@ -31,8 +31,8 @@ class ValidatorController extends Controller{
   public function validatorproduct(Request $request)
   {
     Validator::make($request->all(), [
-      'product_code' => 'required|string',
-      'product_name' => 'required|string',
+      'product_code' => 'required|regex:/^[a-zA-Z0-9]+$/|max:8',
+      'product_name' => 'required|string|max:40',
       'product_value' => 'required|integer'
     ])->validate();
   }

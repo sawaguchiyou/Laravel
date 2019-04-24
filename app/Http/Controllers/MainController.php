@@ -55,7 +55,7 @@ class MainController extends Controller
             return view('search');
         }
 
-        return view('search',compact('product_id','product_name','product_val','insert_date'));
+        return view('search',compact('product_code','product_name','product_val','insert_date'));
 
     }
 
@@ -79,8 +79,7 @@ class MainController extends Controller
 
         if(empty($product_code)){
           // 商品コード未入力
-          echo "<script>alert('商品コードが未入力です。')</script>";
-          return view('search');
+          return redirect('/main')->with('message', '商品コードが未入力です。');
         }
 
         $product_update = DB::connection('mysql_product')->table('M_Product')
@@ -90,8 +89,8 @@ class MainController extends Controller
                 'Product_Val' => $product_val,
                 'insert_date' => Carbon::now()
         ]);
-
-        if($product_update === 1){
+var_dump(Carbon::now());
+        if($product_update >= 1){
             // 更新完了
             echo "<script>alert('商品情報の更新が完了しました。')</script>";
             return view('search');
@@ -117,16 +116,13 @@ class MainController extends Controller
             ->WHERE('Product_ID',$product_code)
             ->delete();
 
-        if($product_delete === 1){
+        if($product_delete >= 1){
             // 削除完了
             echo "<script>alert('商品情報を削除しました。')</script>";
-
             return view('search');
-
         }else{
             // 削除失敗
             echo "<script>alert('商品情報の削除に失敗しました。')</script>";
-
             return view('search');
         }
     }
