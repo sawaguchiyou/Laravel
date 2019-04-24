@@ -54,5 +54,3 @@ class ExportController extends Controller{
     );
   }
 }
-
- ?>
