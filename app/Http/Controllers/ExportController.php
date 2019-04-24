@@ -19,7 +19,7 @@ class ExportController extends Controller{
       ->get();
     return view('export',compact('list'));
   }
-ふぁだ
+  
   // データ出力
   public function output (Request $request){
     //
