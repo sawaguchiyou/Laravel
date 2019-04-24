@@ -107,3 +107,7 @@ Route::post('signup', function () {
 Route::post('staffdel', function () {
     return view('staffdel');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
