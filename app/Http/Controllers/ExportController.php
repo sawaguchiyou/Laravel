@@ -26,7 +26,10 @@ class ExportController extends Controller{
     $list = DB::connection('mysql_product')->table('M_Product')
       ->get();
 
-    $stream = fopen('php://output', 'w');
+    $carbon = carbon::now();
+    $outputFile = '/home/vagrant/code/Laravel/csv/'."$carbon".'.csv';
+    touch($outputFile);
+    $stream = fopen($outputFile, 'w');
     fputcsv($stream, ['商品ID', '商品名', '単価', '最終更新日時']);
 
     foreach($list as $lists){
@@ -38,8 +41,6 @@ class ExportController extends Controller{
           $lists->insert_date
       ]);
     }
-
-    $carbon = carbon::now();
 
     $headers = array(
       'Content-Type' => 'application/csv',
