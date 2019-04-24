@@ -19,7 +19,7 @@ class ExportController extends Controller{
       ->get();
     return view('export',compact('list'));
   }
-  
+
   // データ出力
   public function output (Request $request){
     //
@@ -42,7 +42,7 @@ class ExportController extends Controller{
     $carbon = carbon::now();
 
     $headers = array(
-      'Content-Type' => 'text/csv',
+      'Content-Type' => 'application/csv',
       'Content-Disposition' => 'attachment; filename = '."$carbon".'.csv'
     );
 
