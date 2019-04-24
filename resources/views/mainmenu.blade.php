@@ -57,6 +57,7 @@ body{background-color:#f4f4f4; font-size:14px; letter-spacing:1px;}
 </style>
 </head>
 <body>
+  <div><a href="/signout">ログアウト2(セッション全削除)</a></div>
 <form action = "/main" method = "POST">
     {{ csrf_field() }}
 <div class="syouhin-wrap">

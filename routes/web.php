@@ -11,6 +11,11 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// 認証機能
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 
 // 初期表示（ログイン画面）
 Route::get('/', function () {
@@ -36,6 +41,14 @@ Route::get('/staffdel', function () {
 Route::get('/main', function () {
     return view('search');
 });
+
+// ログイン完了時
+Route::get('/mainmenu', function () {
+    return view('mainmenu');
+});
+
+// ログアウト完了時
+Route::get('/signout','StaffController@signout');
 
 // 検索・更新画面の「戻る」ボタン押下時
 Route::post('/back', function () {
@@ -107,7 +120,3 @@ Route::post('signup', function () {
 Route::post('staffdel', function () {
     return view('staffdel');
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
