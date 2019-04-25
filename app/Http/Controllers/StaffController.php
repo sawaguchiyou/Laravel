@@ -39,18 +39,9 @@ class StaffController extends Controller{
         // postで受け取ったpaswordを変数に格納
         $password = $request->input('password');
 
-        // useridの値があるときだけセッションを保存
-        if ($request->has('user_id')) {
-            $userid = $staff_id;
-
-        }
-
         if($staff_id === null || $staff_id === ''){
           return redirect('/')->with('message', '社員IDが未入力です。');
         }else{
-          // セッションスタート
-          Session::put('userid', $staff_id);
-          Session::put('password', $password);
           // 件数取得
           $staff = DB::table('M_Staff')
             ->WHERE('Staff_ID',$staff_id)
@@ -59,6 +50,10 @@ class StaffController extends Controller{
         }
 
      		if($staff === config('const.STAFF_COUNT')){
+          // セッションスタート
+          Session::put('user_id', $staff_id);
+          Session::put('password', $password);
+
      			return Redirect::to('/mainmenu');
      		}else{
      			return redirect('/')->with('message', '社員IDもしくはパスワードが誤っているためログインできません。再度入力してください。');
@@ -136,44 +131,15 @@ class StaffController extends Controller{
          }
      }
 
-     /**
-      * ログアウト処理
-      *
-      * @param  Request $request
-      * @return Response
-      */
-      public function signout(Request $request)
-      {
-        // postで受け取った社員IDを変数に格納
-         $staff_id = $request->input('user_id');
-         // postで受け取ったpaswordを変数に格納
-         $password = $request->input('password');
-
-         // useridの値があるときだけセッションを保存
-         if ($request->has('user_id')) {
-             $userid = $staff_id;
-
-         }
-
-         if($staff_id === null || $staff_id === ''){
-           return redirect('/')->with('message', '社員IDが未入力です。');
-         }else{
-           // セッションスタート
-           Session::put('userid', $staff_id);
-           Session::put('password', $password);
-           // 件数取得
-           $staff = DB::table('M_Staff')
-             ->WHERE('Staff_ID',$staff_id)
-             ->WHERE('Division_No',$password)
-             ->count();
-         }
-
-          if($staff === config('const.STAFF_COUNT')){
-            return Redirect::to('/mainmenu');
-          }else{
-            return redirect('/')->with('message', '社員IDもしくはパスワードが誤っているためログインできません。再度入力してください。');
-          }
-      }
-
-
+   /**
+    * ログアウト処理
+    *
+    * @param  Request $request
+    * @return Response
+    */
+    public function signout(Request $request)
+    {
+          Session::flush();
+          return redirect('/')->with('message', 'ログアウトしました。');
+    }
 }

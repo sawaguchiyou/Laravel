@@ -89,7 +89,7 @@ class MainController extends Controller
                 'Product_Val' => $product_val,
                 'insert_date' => Carbon::now()
         ]);
-var_dump(Carbon::now());
+
         if($product_update >= 1){
             // 更新完了
             echo "<script>alert('商品情報の更新が完了しました。')</script>";

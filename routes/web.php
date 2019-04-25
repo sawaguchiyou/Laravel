@@ -37,47 +37,65 @@ Route::get('/staffdel', function () {
     return view('staffdel');
 });
 
-// 商品情報検索・削除・更新画面リダイレクト先
-Route::get('/main', function () {
-    return view('search');
-});
-
 // ログイン完了時
 Route::get('/mainmenu', function () {
+  if(Session::has('user_id') && Session::has('password')){
     return view('mainmenu');
+  }else{
+    return redirect('/')->with('message', 'ログインしてください。');
+  }
+
 });
 
-// ログアウト完了時
-Route::get('/signout','StaffController@signout');
+// 商品情報検索・削除・更新画面リダイレクト先
+Route::get('/main', function () {
+  if(Session::has('user_id') && Session::has('password')){
+    return view('search');
+  }else{
+    return redirect('/')->with('message', 'ログインしてください。');
+  }
+});
+
+// 商品情報登録画面リダイレクト先
+Route::get('/main/search', function () {
+  if(Session::has('user_id') && Session::has('password')){
+    return view('search');
+  }else{
+    return redirect('/')->with('message', 'ログインしてください。');
+  }
+});
+
+// 商品情報登録画面リダイレクト先
+Route::get('/main/update', function () {
+  if(Session::has('user_id') && Session::has('password')){
+    return view('search');
+  }else{
+    return redirect('/')->with('message', 'ログインしてください。');
+  }
+});
+
+// ログアウト処理
+Route::post('/signout','StaffController@signout');
 
 // 検索・更新画面の「戻る」ボタン押下時
 Route::post('/back', function () {
     return view('mainmenu');
 });
 
-// 商品情報登録画面リダイレクト先
-Route::get('/main/search', function () {
-    return view('search');
-});
-
-// 商品情報登録画面リダイレクト先
-Route::get('/main/update', function () {
-    return view('search');
-});
-
-
 // mainmenuでの行き先振り分け
 Route::post('main', function (Request $request) {
-	$routin = $request->input("name");
-	if($routin == 'main'){
-		return view('search');
-	}else if($routin == 'ins'){
-		return view('insert');
-  }else if($routin == 'exp'){
-		return view('export');
-	}else if($routin == 'exit'){
-		return redirect('/');
-	}
+  if(Session::has('user_id') && Session::has('password')){
+  	$routin = $request->input("name");
+  	if($routin == 'main'){
+  		return view('search');
+  	}else if($routin == 'ins'){
+  		return view('insert');
+    }else if($routin == 'exp'){
+  		return view('export');
+  	}
+  }else{
+    return redirect('/')->with('message', 'ログインしてください。');
+  }
 });
 
 // 商品コード検索処理
@@ -114,9 +132,4 @@ Route::post('/staff/del' ,'StaffController@staffdel');
 // 社員新規登録画面遷移
 Route::post('signup', function () {
     return view('signup');
-});
-
-// 社員情報削除画面遷移
-Route::post('staffdel', function () {
-    return view('staffdel');
 });
