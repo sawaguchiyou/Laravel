@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 </head>
 <body>
+  <div><a href="/signout">ログアウト2(セッション全削除)</a></div>
 <form action = "/main" method = "POST">
     {{ csrf_field() }}
 <div class="syouhin-wrap">
