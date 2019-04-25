@@ -8,24 +8,9 @@
   box-shadow:3px 3px 8px rgba(0, 0, 0, 0.2);
 }
 
-.kensaku-contain{
+.export-content{
   display:flex;
-  flex-wrap:wrap;
-  align-items: center;
-  justify-content:space-between;
-}
-
-.kensaku-text{
-  width:40%;
-  color:#666;
-  box-sizing:border-box;
-}
-
-.kensaku-textbox{
-  width:60%;
-  margin:5px 0;
-  padding:5px;
-  box-sizing:border-box;
+  justify-content:space-around;
 }
 
 .export-btn{
@@ -45,3 +30,7 @@
 
 .export_table{margin:20px 0; text-align:left;}
 .export_table td{padding:5px 10px; border-bottom:1px dashed #ccc;}
+
+form label input[type="file"]{
+    display: none;
+}

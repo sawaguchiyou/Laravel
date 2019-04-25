@@ -31,7 +31,6 @@ class ExportController extends Controller{
     $outputFile = '/home/vagrant/code/Laravel/csv/'."$date".'.csv';
     touch($outputFile);
     $stream = fopen($outputFile, 'w+');
-    fputcsv($stream, ['商品ID', '商品名', '単価', '最終更新日時']);
 
     foreach($list as $lists){
       fputcsv(
