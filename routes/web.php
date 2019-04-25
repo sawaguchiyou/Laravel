@@ -52,6 +52,11 @@ Route::get('/main/update', function () {
     return view('search');
 });
 
+// インポート画面リダイレクト先
+Route::get('/import', function () {
+    return view('import');
+});
+
 
 // mainmenuでの行き先振り分け
 Route::post('main', function (Request $request) {
@@ -85,8 +90,8 @@ Route::post('/export/get', 'ExportController@get');
 // csv出力処理
 Route::post('/export/output', 'ExportController@output');
 
-// csv出力処理
-Route::post('/export/input', 'ExportController@input');
+// csv入力処理
+Route::post('/export/input', 'ImportController@import');
 
 
 /*
