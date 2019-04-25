@@ -74,7 +74,6 @@ Route::get('/main/update', function () {
   }
 });
 
-<<<<<<< HEAD
 // ログアウト処理
 Route::post('/signout','StaffController@signout');
 
@@ -82,13 +81,11 @@ Route::post('/signout','StaffController@signout');
 Route::post('/back', function () {
     return view('mainmenu');
 });
-=======
 // インポート画面リダイレクト先
 Route::get('/import', function () {
     return view('import');
 });
 
->>>>>>> 2a64553d38d8fba8b1baa55496afd0dc20b2d743
 
 // mainmenuでの行き先振り分け
 Route::post('main', function (Request $request) {
