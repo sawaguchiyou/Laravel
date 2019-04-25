@@ -42,7 +42,7 @@
   </form>
 
   <!-- エクスポート -->
-  <form action="import" method="POST">
+  <form style="margin:0 10px;" action="import" method="POST">
     {{ csrf_field() }}
     <input class="export-btn" type="submit" value="csv出力" formaction = "/export/output">
   </form>
