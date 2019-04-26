@@ -89,7 +89,6 @@ Route::get('/import', function () {
 
 // mainmenuでの行き先振り分け
 Route::post('main', function (Request $request) {
-  if(Session::has('user_id') && Session::has('password')){
   	$routin = $request->input("name");
   	if($routin == 'main'){
   		return view('search');
@@ -98,9 +97,6 @@ Route::post('main', function (Request $request) {
     }else if($routin == 'exp'){
   		return view('export');
   	}
-  }else{
-    return redirect('/')->with('message', 'ログインしてください。');
-  }
 });
 
 // 商品コード検索処理
@@ -140,4 +136,9 @@ Route::post('/staff/del' ,'StaffController@staffdel');
 // 社員新規登録画面遷移
 Route::post('signup', function () {
     return view('signup');
+});
+
+// 社員情報削除画面遷移
+Route::post('/staffdel', function () {
+    return view('staffdel');
 });

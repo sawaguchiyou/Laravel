@@ -10,7 +10,6 @@
 <body>
 <form action="/staff/del" method="POST" class="rogin-contain">
 {{ csrf_field() }}
-    {{ csrf_field() }}
     <div class="rogin-content">
         <p class="rogin-text">社員ID</p>
         <input class="rogin-box" type="text" name="staff_id">
